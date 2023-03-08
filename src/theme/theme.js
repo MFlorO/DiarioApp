@@ -10,6 +10,7 @@ const theme = createTheme({
       main: green[500],
     },
   },
+  shadows: [ 'none', '0px 5px 5px rgba(0, 0, 0, 0.2)']
 });
 
 export default theme

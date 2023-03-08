@@ -2,7 +2,7 @@ import { ThemeProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
 import theme from "./theme";
 
-//Este es un hight order componente --> que recibe el children (Un componente que recibe componentes hijos)
+//Este es un higher order componente --> que recibe el children (Un componente que recibe componentes hijos)
 
 const AppTheme = ({ children }) => {
   return (
