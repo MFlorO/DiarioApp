@@ -1,38 +1,36 @@
-// import { Google } from "@mui/icons-material";
+import GoogleIcon from '@mui/icons-material/Google';
 import {Link as RouterLink} from 'react-router-dom'
-import { Typography, Grid, TextField, Button, Link } from "@mui/material";
+import { Typography, Stack, TextField, Button, Link } from "@mui/material";
 import { AuthLayOut } from '../layout';
 
 const Login = () => {
   return (
     <AuthLayOut text='Login'>
       <form>
-        <Grid container backgroundColor='white'sx={{ padding:"4"}}>
-          <Grid item  xs={12} sx={{ mt: 2 }}>
+        <Stack backgroundColor='white' sx={{mb:3}}>
+          <Stack>
             <TextField label="correo" type="email" placeholder="correo@google.com" fullWidth />
-          </Grid>
+          </Stack>
 
-          <Grid item  xs={12} sx={{ mt: 2 }}>
+          <Stack sx={{mt: 2}}>
             <TextField label="contraseña" type="password" placeholder="contraseña" fullWidth />
-          </Grid>
+          </Stack>
 
-          <Grid container spacing={2} sx={{mb:1, mt:1}}>
-            <Grid item xs={12} sm={6}>
-              <Button variant='contained' fullWidth>Login</Button>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Button variant='contained' fullWidth>
-                {/* <Google/> */}
-                <Typography sx={{ml:1}}>Google</Typography>
+          <Stack flexDirection={{xs:'column', md:'row'}} alignItems='center' justifyContent='space-around' sx={{mt:3}}>
+            <Stack sx={{mb:2}} width>
+              <Button variant='contained'>Login</Button>
+            </Stack>
+            <Stack sx={{mb:2, ml:{xs:0, md:2}}} width>
+              <Button variant='contained' startIcon={<GoogleIcon />}>
+                <Typography>Google</Typography>
               </Button>
-            </Grid>
+            </Stack>
+          </Stack>
 
-            <Grid container direction='row' justifyContent='end' sx={{mt:1}}>
+          <Stack alignItems={{xs:'center', md:'end'}} sx={{mt:0.5}}>
               <Link component={RouterLink} to='/auth/register'>Crear una cuenta</Link>
-            </Grid>
-          </Grid>
-
-        </Grid>
+          </Stack>
+        </Stack>
       </form>
       </AuthLayOut>
   );
