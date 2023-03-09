@@ -1,18 +1,28 @@
-import { Stack } from "@mui/system";
-import {NavBar} from "../components";
+import { Box, Toolbar } from "@mui/material";
+import { NavBar, SideBar } from "../components";
+
+
+const drawerWidth = 280;
 
 const JournalLayout = ({ children }) => {
   return (
-    <Stack>
-      <Stack>
-        <NavBar />
-      </Stack>
-        
-      <Stack sx={{flexGrow:1,p: 3}}>
-        {children}
-      </Stack>
-    </Stack>
-  );
-};
+    <Box sx={{ display: 'flex' }}>
 
-export default JournalLayout;
+        <NavBar drawerWidth={ drawerWidth } />
+
+        <SideBar drawerWidth={ drawerWidth } />
+
+        <Box 
+            component='main'
+            sx={{ flexGrow: 1, p: 3 }}
+        >
+            <Toolbar />
+
+            { children }
+            
+        </Box>
+    </Box>
+  )
+}
+
+export default JournalLayout

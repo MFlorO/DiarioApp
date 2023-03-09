@@ -2,21 +2,33 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { AppBar, IconButton, Toolbar, Typography, Grid } from "@mui/material"
 
-const NavBar = () => {
-  return (
-    <AppBar position='fixed'>
-        <Toolbar>
-          <IconButton><MenuIcon color='inherit' sx={{display:{sm:'none'} }} alignItems='center' justifyContent='space-between' /></IconButton>
 
-          <Grid container directin='row' justifyContent='space-around' alignItems='center' >
+const NavBar = ({ drawerWidth = 240 }) => {
+  return (
+    <AppBar 
+        position='fixed'
+        sx={{ 
+            width: { sm: `calc(100% - ${ drawerWidth }px)` },
+            ml: { sm: `${ drawerWidth }px` }
+         }}
+    >
+        <Toolbar>
+            <IconButton
+                color='inherit'
+                edge="start"
+                sx={{ mr: 2, display: { sm: 'none' } }}
+            >
+                <MenuIcon />
+            </IconButton>
+
+            <Grid container direction='row' justifyContent='space-between' alignItems='center'>
             <Typography>Diario App</Typography>
-            <IconButton color='white'><LogoutIcon /></IconButton>
-          </Grid>
+            <IconButton><LogoutIcon sx={{color:'white'}}/></IconButton>
+            </Grid>
 
         </Toolbar>
-
     </AppBar>
   )
 }
 
-export default NavBar
+export default NavBar;
