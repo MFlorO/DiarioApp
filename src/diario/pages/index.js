@@ -1,1 +1,1 @@
-export { default as DiarioPage } from './DiarioPage';
+export { default as JournalPage } from './JournalPage';
