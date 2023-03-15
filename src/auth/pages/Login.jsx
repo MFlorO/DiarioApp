@@ -1,4 +1,5 @@
-import { useDispatch } from 'react-redux';
+import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import GoogleIcon from '@mui/icons-material/Google';
 import {Link as RouterLink} from 'react-router-dom'
@@ -15,6 +16,9 @@ const Login = () => {
 
   const dispatch = useDispatch()
 
+  const { status } = useSelector( state => state.auth)
+  const isAuthenticated = useMemo( () => status === 'checking', [status])  //Memorizo el valor status porque quiero que se renderice SOLO cuando cambia
+
   const { email, password, onInputChange } = useForm({
     email:'floroldani@hotmail.com',
     password: '123456'
@@ -22,14 +26,12 @@ const Login = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-
     dispatch(checkingAutentication({email, password}))
   }
 
 
   const onGoogleSignIn = (event) => {
     event.preventDefault();
-
     dispatch(startGoogleSignIn({email, password}))
   }
 
@@ -48,10 +50,10 @@ const Login = () => {
 
           <Stack flexDirection={{xs:'column', md:'row'}} alignItems='center' justifyContent='space-around' sx={{mt:3}}>
             <Stack sx={{mb:2}} width>
-              <Button variant='contained' type='submit'>Login</Button>
+              <Button variant='contained' type='submit' disabled={isAuthenticated}>Login</Button>
             </Stack>
             <Stack sx={{mb:2, ml:{xs:0, md:2}}} width>
-              <Button variant='contained' startIcon={<GoogleIcon />}  onClick={onGoogleSignIn}>
+              <Button variant='contained' startIcon={<GoogleIcon />}  onClick={onGoogleSignIn} disabled={isAuthenticated}>
                 <Typography>Google</Typography>
               </Button>
             </Stack>
