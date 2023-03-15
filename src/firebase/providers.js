@@ -34,25 +34,25 @@ export const singInWithGoogle = async() => {
 }
 
 
-// export const registerUserWithEmailPassword = async({ email, password, displayName }) => {
+export const registerUserWithEmailPassword = async({ email, password, displayName }) => {
 
-//     try {
-//         const resp = await createUserWithEmailAndPassword( FirebaseAuth, email, password );
-//         const { uid, photoURL } = resp.user;
+    try {
+        const resp = await createUserWithEmailAndPassword( FirebaseAuth, email, password );
+        const { uid, photoURL } = resp.user;
 
-//         await updateProfile( FirebaseAuth.currentUser, { displayName });
+        await updateProfile( FirebaseAuth.currentUser, { displayName });   //Actualizar el name en firebase
 
-//         return {
-//             ok: true,
-//             uid, photoURL, email, displayName
-//         }
+        return {
+            ok: true,
+            uid, photoURL, email, displayName
+        }
 
-//     } catch (error) {
-//         console.log(error);
-//         return { ok: false, errorMessage: error.message }
-//     }
+    } catch (error) {
+        console.log(error);
+        return { ok: false, errorMessage: error.message }
+    }
 
-// }
+}
 
 
 // export const loginWithEmailPassword = async({ email, password }) => {

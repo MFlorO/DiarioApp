@@ -1,13 +1,16 @@
+import { useDispatch } from 'react-redux';
 import {Link as RouterLink} from 'react-router-dom'
 import { Typography, Stack, TextField, Button, Link } from "@mui/material";
 import { AuthLayOut } from '../layout';
 import {validateRegister} from './functions';
 import { useForm } from '~/hooks/useForm';
+import { startCreatingUserWithEmailPassword } from '~/redux';
 
 
 const formData = {
-  name: "",
-  email: ""
+  displayName: "",
+  email: "",
+  password: ""
 }
 
 
@@ -15,7 +18,9 @@ const formData = {
 const Register = () => {
 
 
-  const { name, email, password, onInputChange, errorFormValid, onResetForm } = useForm(formData, validateRegister)
+  const dispatch = useDispatch()
+
+  const { displayName, email, password, onInputChange, errorFormValid, onResetForm } = useForm(formData, validateRegister)
   
   const formValid = () => {
     if (Object.keys(errorFormValid).length > 0) return true
@@ -25,7 +30,7 @@ const Register = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    // dispatch(checkingAutentication({email, password}));
+    dispatch(startCreatingUserWithEmailPassword({displayName, email, password}));
     onResetForm();
   }
 
@@ -39,11 +44,11 @@ const Register = () => {
            type="text" 
            placeholder="Nombre Completo" 
            fullWidth
-           name="name" 
-           value={name} 
+           name="displayName" 
+           value={displayName} 
            onChange={onInputChange} 
            error={formValid()}  
-           helperText={errorFormValid.name}
+           helperText={errorFormValid.displayName}
             />
           </Stack>
 
@@ -66,7 +71,8 @@ const Register = () => {
             label="contraseña" 
             type="password" 
             placeholder="contraseña" 
-            fullWidth name="password" 
+            fullWidth 
+            name="password" 
             value={password} 
             onChange={onInputChange} 
             error={formValid()} 
@@ -75,8 +81,8 @@ const Register = () => {
           </Stack>
 
           <Stack flexDirection={{xs:'column', md:'row'}} alignItems='center' justifyContent='space-around' sx={{mt:3}}>
-            <Stack sx={{mb:2}} width type='submit' disabled={formValid()}>
-              <Button variant='contained'>Crear cuenta</Button>
+            <Stack sx={{mb:2}} width>
+              <Button variant='contained' type='submit' disabled={formValid()}>Crear cuenta</Button>
               </Stack>
           </Stack>
 

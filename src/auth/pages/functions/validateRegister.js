@@ -9,8 +9,8 @@ const validateRegister = (input) => {
 
     let errores = {};
   
-    if((input.name.length < 3)){   
-    errores.name = "The name must have more than 3 characters"
+    if((input.displayName.length < 3)){   
+    errores.displayName = "The name must have more than 3 characters"
     }
 
     if((!expresionEmail.test(input.email))){   
@@ -19,7 +19,7 @@ const validateRegister = (input) => {
 
     if((!expresionPassword.test(input.password))){   
       errores.password = "Error in password format"
-      }
+    }
     
     return errores
   }
