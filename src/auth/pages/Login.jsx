@@ -7,7 +7,7 @@ import { Typography, Stack, TextField, Button, Link } from "@mui/material";
 import { AuthLayOut } from '../layout';
 import { useForm } from '~/hooks';
 
-import { checkingAutentication, startGoogleSignIn } from '~/redux';
+import { startLoginWithEmailPassword, startGoogleSignIn } from '~/redux';
 import { validateLogin } from './functions';
 
 
@@ -34,7 +34,7 @@ const Login = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch(checkingAutentication({email, password}));
+    dispatch(startLoginWithEmailPassword({email, password}));
     onResetForm();
   }
 
