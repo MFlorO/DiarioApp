@@ -15,15 +15,13 @@ const formData = {
 const Register = () => {
 
 
-  const { name, email, onInputChange, errorFormValid, onResetForm } = useForm(formData, validateRegister)
+  const { name, email, password, onInputChange, errorFormValid, onResetForm } = useForm(formData, validateRegister)
   
   const formValid = () => {
     if (Object.keys(errorFormValid).length > 0) return true
 
     return false
   }
-
-  console.log(errorFormValid)
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -61,6 +59,19 @@ const Register = () => {
            error={formValid()}  
            helperText={errorFormValid.email}
            />
+          </Stack>
+
+          <Stack sx={{mt: 2}}>
+            <TextField 
+            label="contraseña" 
+            type="password" 
+            placeholder="contraseña" 
+            fullWidth name="password" 
+            value={password} 
+            onChange={onInputChange} 
+            error={formValid()} 
+            helperText={errorFormValid.password}
+            />
           </Stack>
 
           <Stack flexDirection={{xs:'column', md:'row'}} alignItems='center' justifyContent='space-around' sx={{mt:3}}>
