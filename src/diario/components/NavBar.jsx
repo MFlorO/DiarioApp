@@ -1,9 +1,18 @@
+import { useDispatch } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { AppBar, IconButton, Toolbar, Typography, Grid } from "@mui/material"
+import { startLogOut } from '~/redux/';
 
 
 const NavBar = ({ drawerWidth = 240 }) => {
+
+    const dispatch = useDispatch()
+
+    const onLogout = () =>{
+        dispatch(startLogOut())
+    }
+
   return (
     <AppBar 
         position='fixed'
@@ -23,7 +32,7 @@ const NavBar = ({ drawerWidth = 240 }) => {
 
             <Grid container direction='row' justifyContent='space-between' alignItems='center'>
             <Typography>Diario App</Typography>
-            <IconButton><LogoutIcon sx={{color:'white'}}/></IconButton>
+            <IconButton onClick={onLogout}><LogoutIcon sx={{color:'white'}}/></IconButton>
             </Grid>
 
         </Toolbar>
