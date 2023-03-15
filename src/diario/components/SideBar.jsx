@@ -22,7 +22,7 @@ const SideBar = ({ drawerWidth = 240 }) => {
               <List>
                   {
                       ['Enero','Febrero','Marzo','Abril'].map( text => (
-                          <ListItem key={ text } disablePadding  sx={{ "&:hover": { backgroundColor: "primary.main" },  }}>
+                          <ListItem key={ text } disablePadding  sx={{ "&:hover": { backgroundColor: "primary.main" }}}>
                               <ListItemButton>
                                   <ListItemIcon><TurnedInNotIcon /></ListItemIcon>
                                   <Grid container>
