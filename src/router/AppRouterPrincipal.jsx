@@ -1,4 +1,3 @@
-import { useDispatch } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { AuthRoutes } from "~/auth/router";
 import { DiarioRoutes } from "~/diario/router";
