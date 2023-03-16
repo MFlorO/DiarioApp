@@ -15,7 +15,7 @@ const AppRouterPrincipal = () => {
   
   return (
     <Routes>
-      
+
         {    
           (status === 'authenticated')
            ? <Route path="/*" element={ <DiarioRoutes /> } />
@@ -25,10 +25,6 @@ const AppRouterPrincipal = () => {
         <Route path='/*' element={ <Navigate to='/auth/login' />  } /> 
 
         {/*Cualquier path (por el *) que entre a auth va a mostrar las rutas de auth */}
-
-
-      {/* <Route path="/auth/*" element={<AuthRoutes />} /> 
-      <Route path="/*" element={<DiarioRoutes />} /> */}
 
     </Routes>
   );
