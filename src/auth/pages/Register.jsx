@@ -37,7 +37,7 @@ const Register = () => {
   return (
     <AuthLayOut text='Register'>
        <form onSubmit={onSubmit}>
-        <Stack backgroundColor='white' sx={{mb:3}}>
+        <Stack backgroundColor='#422631' sx={{mb:3}}>
           <Stack sx={{mt: 2}}>
            <TextField 
            label="Nombre completo" 

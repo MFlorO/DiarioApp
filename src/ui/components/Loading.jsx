@@ -10,11 +10,12 @@ export const Loading = () => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      sx={{ minHeight: '100vh', backgroundColor: 'primary.main', padding: 4, minWidth:'100vw' }}
+      backgroundColor='background.main'
+      sx={{ minHeight: '100vh', padding: 4, minWidth:'100vw' }}
     >
 
         <Grid container direction='row' justifyContent='center' >
-            <CircularProgress color='info' />
+            <CircularProgress sx={{color:'primary.main'}} />
         </Grid>
     </Grid>
   )

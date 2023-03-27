@@ -46,8 +46,8 @@ const Login = () => {
 
   return (
     <AuthLayOut text='Login'>
-      <form onSubmit={onSubmit}>
-        <Stack backgroundColor='white' sx={{mb:3}}>
+      <form onSubmit={onSubmit} >
+        <Stack backgroundColor='#422631' sx={{mb:3}}>
           <Stack>
             <TextField 
             label="correo" 
@@ -59,6 +59,7 @@ const Login = () => {
             onChange={onInputChange} 
             error={formValid()}  
             helperText={errorFormValid.email}
+            sx={{ borderColor: 'primary.main' }}
             />
           </Stack>
 
